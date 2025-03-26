@@ -25,7 +25,7 @@ const Menu = () => {
     fetchMenu();
   }, [businessId]);
 
-  // Add the missing categories and menuSections definitions
+ 
   const categories = [
     'Todos',
     'Populares',
@@ -40,7 +40,7 @@ const Menu = () => {
     { id: 'postres', title: 'Postres', active: false }
   ];
 
-  // Add function to handle adding items to order
+ 
   const addToOrder = (dish) => {
     const existingItem = orderItems.find(item => item.id === dish.id);
     if (existingItem) {
@@ -54,12 +54,12 @@ const Menu = () => {
     }
   };
 
-  // Add function to handle removing items from order
+ 
   const removeFromOrder = (dishId) => {
     setOrderItems(orderItems.filter(item => item.id !== dishId));
   };
 
-  // Add function to update quantity
+  
   const updateQuantity = (dishId, newQuantity) => {
     if (newQuantity < 1) {
       removeFromOrder(dishId);
@@ -70,7 +70,7 @@ const Menu = () => {
     ));
   };
 
-  // Add function to handle order submission
+ 
   const handleOrderSubmit = async () => {
     try {
       const orderData = {

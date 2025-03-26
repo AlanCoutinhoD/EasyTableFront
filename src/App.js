@@ -6,6 +6,7 @@ import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Dishes from './components/Dishes';
 import Menu from './components/Menu'; 
+import Kitchen from './components/Kitchen';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/menu/:businessId/:tableNumber/:branchId" element={<Menu />} />
         <Route path="/platillos" element={<Dishes />} />
+        <Route path="/kitchen" element={<Kitchen />} />
       </Routes>
     </Router>
   );

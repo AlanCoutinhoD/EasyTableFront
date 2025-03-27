@@ -48,7 +48,7 @@ const Dishes = () => {
             <RiMenuLine className="h-5 w-5" />
             <span>Gestionar Platillos</span>
           </Link>
-          <Link to="/sucursales" className="flex items-center gap-2 p-2 text-gray-600 hover:bg-gray-50 rounded-md">
+          <Link to="/branches" className="flex items-center gap-2 p-2 text-gray-600 hover:bg-gray-50 rounded-md">
             <RiStore2Line className="h-5 w-5" />
             <span>Gestionar Sucursales</span>
           </Link>

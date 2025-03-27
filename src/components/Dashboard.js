@@ -72,7 +72,7 @@ const Dashboard = () => {
             <RiMenuLine className="h-5 w-5" />
             <span>Gestionar Platillos</span>
           </Link>
-          <Link to="/sucursales" className="flex items-center gap-2 p-2 text-gray-600 hover:bg-gray-50 rounded-md">
+          <Link to="/branches" className="flex items-center gap-2 p-2 text-gray-600 hover:bg-gray-50 rounded-md">
             <RiStore2Line className="h-5 w-5" />
             <span>Gestionar Sucursales</span>
           </Link>
@@ -185,45 +185,84 @@ const Dashboard = () => {
                 )}
               </div>
               <div className="bg-white p-6 rounded-lg shadow-sm">
-                {/* Top Dishes section remains the same */}
+             
               </div>
             </>
           ) : activeTab === 'sucursales' ? (
             <div className="col-span-3">
               <div className="bg-white p-6 rounded-lg shadow-sm">
-                <h2 className="text-xl font-bold mb-6">Sucursales</h2>
-                {branches.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-xl font-bold">Gestión de Sucursales</h2>
+                  <button className="bg-black text-white px-4 py-2 rounded-md flex items-center gap-2">
+                    <span>+</span> Nueva Sucursal
+                  </button>
+                </div>
+
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold mb-2">Sucursales</h3>
+                  <p className="text-gray-600">Administra las sucursales de tu restaurante desde aquí.</p>
+                </div>
+
+                <div className="flex justify-between mb-6">
+                  <div className="relative w-96">
+                    <input
+                      type="text"
+                      placeholder="Buscar sucursales..."
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md"
+                    />
+                  </div>
+                  <div className="flex gap-4">
+                    <select className="px-4 py-2 border border-gray-300 rounded-md">
+                      <option>Todos los estados</option>
+                      <option>Activa</option>
+                      <option>En renovación</option>
+                      <option>En construcción</option>
+                    </select>
+                    <button className="px-4 py-2 border border-gray-300 rounded-md">
+                      Exportar
+                    </button>
+                  </div>
+                </div>
+
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="text-left py-3">Nombre</th>
+                      <th className="text-left py-3">Dirección</th>
+                      <th className="text-left py-3">Teléfono</th>
+                      <th className="text-left py-3">Gerente</th>
+                      <th className="text-left py-3">Estado</th>
+                      <th className="text-left py-3">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                     {branches.map((branch) => (
-                      <div key={branch.id} className="bg-gray-50 p-4 rounded-lg">
-                        <h3 className="text-lg font-semibold mb-3">{branch.name}</h3>
-                        <div className="space-y-2 text-gray-600">
-                          <p className="flex items-center gap-2">
-                            <span className="font-medium">Dirección:</span>
-                            {branch.address}
-                          </p>
-                          <p className="flex items-center gap-2">
-                            <span className="font-medium">Teléfono:</span>
-                            {branch.phone}
-                          </p>
-                          <p className="flex items-center gap-2">
-                            <span className="font-medium">Fecha de creación:</span>
-                            {new Date(branch.created_at).toLocaleDateString('es-ES', {
-                              year: 'numeric',
-                              month: 'long',
-                              day: 'numeric'
-                            })}
-                          </p>
-                        </div>
-                      </div>
+                      <tr key={branch.id} className="border-b">
+                        <td className="py-3">{branch.name}</td>
+                        <td className="py-3">{branch.address}</td>
+                        <td className="py-3">{branch.phone}</td>
+                        <td className="py-3">{branch.manager}</td>
+                        <td className="py-3">
+                          <span className={`px-2 py-1 rounded-full text-sm ${
+                            branch.status === 'Activa' ? 'bg-green-100 text-green-800' :
+                            branch.status === 'En renovación' ? 'bg-yellow-100 text-yellow-800' :
+                            'bg-blue-100 text-blue-800'
+                          }`}>
+                            {branch.status}
+                          </span>
+                        </td>
+                        <td className="py-3">
+                          <div className="flex gap-2">
+                            <button className="p-2 hover:bg-gray-100 rounded-md">
+                              <RiMenuLine className="w-5 h-5" />
+                            </button>
+                            <button className="p-2 hover:bg-gray-100 rounded-md">⋮</button>
+                          </div>
+                        </td>
+                      </tr>
                     ))}
-                  </div>
-                ) : (
-                  <div className="text-center text-gray-500 py-8">
-                    <RiStore2Line className="w-16 h-16 mx-auto mb-4" />
-                    <p>No hay sucursales registradas</p>
-                  </div>
-                )}
+                  </tbody>
+                </table>
               </div>
             </div>
           ) : null}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { RiDashboardLine, RiTeamLine, RiMenuLine, RiStore2Line, RiSettings4Line, RiLogoutBoxLine } from 'react-icons/ri';
+import { BsFileEarmarkText } from 'react-icons/bs';
 
 const Branches = () => {
   const [branches, setBranches] = useState([]);
@@ -49,9 +50,9 @@ const Branches = () => {
               <RiStore2Line className="h-5 w-5" />
               <span>Gestionar Sucursales</span>
             </a>
-            <a href="/configuracion" className="flex items-center gap-2 p-2 text-gray-600 hover:bg-gray-50 rounded-md">
-              <RiSettings4Line className="h-5 w-5" />
-              <span>Configuración</span>
+            <a href="/ventas" className="flex items-center gap-2 p-2 text-gray-600 hover:bg-gray-50 rounded-md">
+              <BsFileEarmarkText className="h-5 w-5" />
+              <span>Ventas</span>
             </a>
             <button className="flex items-center gap-2 p-2 text-red-600 hover:bg-gray-50 rounded-md w-full mt-4">
               <RiLogoutBoxLine className="h-5 w-5" />
@@ -127,7 +128,7 @@ const Branches = () => {
                         {branch.status}
                       </span>
                     </td>
-                    // In the actions column of the table
+                  
                     <td className="py-3">
                       <div className="flex gap-2">
                         <Link 

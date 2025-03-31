@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { RiRestaurantLine, RiDashboardLine, RiTeamLine, RiMenuLine, RiStore2Line, RiSettings4Line, RiLogoutBoxLine } from 'react-icons/ri';
+import { RiRestaurantLine, RiDashboardLine, RiTeamLine, RiMenuLine, RiStore2Line, RiLogoutBoxLine } from 'react-icons/ri';
+import { BsFileEarmarkText } from 'react-icons/bs';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Dishes = () => {
   const [dishes, setDishes] = useState([]);
@@ -24,6 +26,9 @@ const Dishes = () => {
   
     fetchProducts();
   }, []);
+
+  // In your Dishes component
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen flex bg-gray-50">
@@ -52,9 +57,9 @@ const Dishes = () => {
             <RiStore2Line className="h-5 w-5" />
             <span>Gestionar Sucursales</span>
           </Link>
-          <Link to="/configuracion" className="flex items-center gap-2 p-2 text-gray-600 hover:bg-gray-50 rounded-md">
-            <RiSettings4Line className="h-5 w-5" />
-            <span>Configuración</span>
+          <Link to="/ventas" className="flex items-center gap-2 p-2 text-gray-600 hover:bg-gray-50 rounded-md">
+            <BsFileEarmarkText className="h-5 w-5" />
+            <span>Ventas</span>
           </Link>
           <button className="flex items-center gap-2 p-2 text-red-600 hover:bg-gray-50 rounded-md w-full">
             <RiLogoutBoxLine className="h-5 w-5" />
@@ -67,7 +72,10 @@ const Dishes = () => {
       <main className="flex-1 p-8">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold">Gestión de Platillos</h1>
-          <button className="bg-black text-white px-4 py-2 rounded-md flex items-center gap-2">
+          <button 
+            onClick={() => navigate('/platillos/nuevo')}
+            className="bg-black text-white px-4 py-2 rounded-md flex items-center gap-2"
+          >
             <span>+</span> Nuevo Platillo
           </button>
         </div>

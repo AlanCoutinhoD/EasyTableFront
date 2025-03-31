@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { RiRestaurantLine, RiDashboardLine, RiTeamLine, RiMenuLine, RiStore2Line, RiSettings4Line, RiLogoutBoxLine } from 'react-icons/ri';
+import { RiRestaurantLine, RiDashboardLine, RiTeamLine, RiMenuLine, RiStore2Line, RiLogoutBoxLine } from 'react-icons/ri';
+import { BsFileEarmarkText } from 'react-icons/bs';
 import axios from 'axios';
 
 const Dashboard = () => {
@@ -76,9 +77,9 @@ const Dashboard = () => {
             <RiStore2Line className="h-5 w-5" />
             <span>Gestionar Sucursales</span>
           </Link>
-          <Link to="/configuracion" className="flex items-center gap-2 p-2 text-gray-600 hover:bg-gray-50 rounded-md">
-            <RiSettings4Line className="h-5 w-5" />
-            <span>Configuración</span>
+          <Link to="/ventas" className="flex items-center gap-2 p-2 text-gray-600 hover:bg-gray-50 rounded-md">
+            <BsFileEarmarkText className="h-5 w-5" />
+            <span>Ventas</span>
           </Link>
           <button className="flex items-center gap-2 p-2 text-red-600 hover:bg-gray-50 rounded-md w-full">
             <RiLogoutBoxLine className="h-5 w-5" />
